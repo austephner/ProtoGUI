@@ -5,8 +5,9 @@ Collection of useful classes and functionality that allows for rapid UI-window p
 # Usage
 ### Inheriting From `ProtoGUIWindow`
 1. Create a new script
-2. Inherit from `ProtoGUIWindow` instead of `MonoBehaviour`
-3. Override `DrawContent` to begin using `GUILayout` code. 
+2. Import the `ProtoGUI` namespace.
+3. Inherit from `ProtoGUIWindow` instead of `MonoBehaviour`
+4. Override `DrawContent` to begin using `GUILayout` code. 
 
 ```c#
 using UnityEngine;
