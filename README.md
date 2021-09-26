@@ -60,7 +60,7 @@ The included `GUILayout` based class provides methods for some advanced field ty
 - More coming soon!
 
 # Example Window
-This API comes with a simple folder-browser implementation (see the above section for a screenshot). 
+This API comes with a simple folder-browser implementation. 
 
 ```c#
 using System.IO;
