@@ -1,14 +1,12 @@
 # ProtoGUI
 #### Summary
-Collection of useful classes and functionality that allows for rapid UI-window prototyping with IMGUI. Includes an extensible window system that mimics OS-like behaviour. It's very easy to setup and implement!
+Collection of useful classes and `GUILayout` functionality that allows for rapid UI-window prototyping with IMGUI. Includes an extensible window system that mimics OS-like behaviour. It's very easy to setup and implement!
 
 #### Examples
-![ExampleWindow](https://i.imgur.com/eGxf46Z.gif)
-
-![Window Manager](https://i.imgur.com/24HYKm9.gif)
+![ExampleWindow](https://i.imgur.com/PmPCRHN.gif)
 
 # Usage
-### Inheriting From `ProtoGUIWindow`
+### Creating New `ProtoGUIWindow` Implementations
 1. Create a new script.
 2. Import the `ProtoGUI` namespace.
 3. Inherit from `ProtoGUIWindow` instead of `MonoBehaviour`
@@ -25,72 +23,43 @@ namespace ProtoGUI.Examples
     {
         protected override void DrawContent()
         {
-            GUILayout.FlexibleSpace();
-
-            using (new GUILayout.HorizontalScope())
-            {
-                GUILayout.FlexibleSpace();
-                GUILayout.Label("Hello World");
-                GUILayout.FlexibleSpace();
-            }
-
-            GUILayout.FlexibleSpace();
+            ProtoGUILayout.DrawFullyFlexibleContent("Hello World!");
         }
     }
 }
 ```
 
-4. In the inspector, attach the script to a game object. 
-5. Configure the window as you wish!
-
 **Note** that not all settings work during runtime when changed. This will be improved as time goes on. Most changes however would require `Start()` to be called again or the editor to be stopped/started.
 
 ### Using the Window Manager
-The window manager allows for certain windows to appear minimized and otherwise accessible from a small menu. 
+The window manager allows for certain windows to appear minimized and otherwise accessible from a small menu. See the image at the top of this page for an example.
 1. Add the `ProtoGUIWindowManager` component to a game object. 
 2. Configure as needed. 
 3. Ensure any `ProtoGUIWindow` implementations have set "Show in Window Manager" to `true` if you'd like for them to appear in the window manager.
 4. Start the game. 
 
-Note that the window manager's own window may not appear at all if there aren't any windows in the scene configured to appear as an option inside of it.
+**Note** that the window manager's own window may not appear at all if there aren't any windows in the scene configured to appear as an option inside of it.
 
-### Drawing the Toolbar
-The toolbar is useful for showing buttons that should always be available on the window. By default, the window includes a "Minimize" and "Close" button. These can be configured to be turned off and not appear.
-<br><br>
+### Utilizing `ProtoGUILayout` Methods
+The included `GUILayout` based class provides methods for some advanced field types. This class will be added to overtime. All functions are shown in the GIF at the top of this Readme, but are also listed here:
+- `DrawVerticalMenuOptions()`
+  - Uses an array of `ProtoMenuButton` objects to display clickable options
+  - All options invoke an action and can be customized
+- `DrawFullyFlexibleContent()`
+- `DrawHorizontallyFlexibleContent()`
+- `DrawVerticallyFlexibleContent()`
+- `DrawHorizontalSliderField()`
+- `DrawFancyHorizontalSliderField()`
+  - Can be used to draw heavily labeled horizontal fields.
+  - Labels can be customized to be shown or hidden, such as a "min" and "max" label.
+- `DrawHorizontalEnumSelector<T>()`
+  - Uses a left and right button to cycle through the given enum values.
+- `DrawHorizontalEnumSelectionGrid()`
+  - Uses `GUILayout.SelectionGrid()`
+  - Automatically draws all the given enum values as selectable options.
+- More coming soon!
 
-**Overriding `DrawToolbar()`**
-1. In the inspector, select the desired window and enable the "Show Toolbar" option for the component.
-2. In the script, override `DrawToolbar()`.
-3. Add your custom `GUILayout` code.
-
-```c#
-// Snippet from the below example image...
-
-protected override void DrawToolbar()
-{
-    if (GUILayout.Button("Refresh"))
-    {
-        RefreshContent();
-    }
-
-    if (GUILayout.Button("Go Up"))
-    {
-        GoUpDirectory();
-    }
-    
-    base.DrawToolbar();
-}
-```
-
-![ExampleWindow2](https://i.imgur.com/w4MhklM.png)
-<br>
-
-**Key:**
-1. Enabling "Show Toolbar" will draw the entire toolbar. This setting has to be on in order for the "Close" and "Minimize" buttons to show, regardless of whether or not those fields are enabled. 
-2. The "Minimize" and "Close" buttons. These can be enabled/disabled through the inspector. 
-3. The custom `GUILayout` content. It's spaced by with a call to `GUILayout.FlexibleSpace()` by default, so all code will be left-aligned.
-
-# Example
+# Example Window
 This API comes with a simple folder-browser implementation (see the above section for a screenshot). 
 
 ```c#
