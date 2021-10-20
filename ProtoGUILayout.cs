@@ -100,7 +100,7 @@ namespace ProtoGUI
         /// <param name="verticalBoxStyle"></param>
         public static void DrawVerticallyFlexibleContent(Action drawContent, GUIStyle verticalBoxStyle = null)
         {
-            using (new EditorGUILayout.VerticalScope())
+            using (new GUILayout.VerticalScope())
             {
                 GUILayout.FlexibleSpace();
 

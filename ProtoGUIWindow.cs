@@ -169,14 +169,14 @@ namespace ProtoGUI
                 GUILayout.FlexibleSpace();
                 if (!minimized)
                 {
-                    if (GUILayout.Button(GetMinimizeLabel(), GUILayout.ExpandWidth(false)))
+                    if (showMinimizeButton && GUILayout.Button(GetMinimizeLabel(), GUILayout.ExpandWidth(false)))
                     {
                         minimized = true;
                     }
                 }
                 else
                 {
-                    if (GUILayout.Button(GetMaximizeLabel(), GUILayout.ExpandWidth(false)))
+                    if (showCloseButton && GUILayout.Button(GetMaximizeLabel(), GUILayout.ExpandWidth(false)))
                     {
                         minimized = false;
                     }
