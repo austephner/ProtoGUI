@@ -49,15 +49,39 @@ namespace ProtoGUI
                 GUI.color = originalColor;
             }
         }
+        
+        /// <summary>
+        /// Draws content surrounded by <see cref="GUILayout.FlexibleSpace"/> calls in both a horizontal and vertical
+        /// scope. This is useful for creating centered content. 
+        /// </summary>
+        /// <param name="drawContent">The invokable action used to draw content within the horizontal and vertical flexed space.</param>
+        public static void DrawFullyFlexibleContent(Action drawContent)
+        {
+            using (new GUILayout.HorizontalScope())
+            {
+                GUILayout.FlexibleSpace();
+
+                using (new GUILayout.VerticalScope())
+                {
+                    GUILayout.FlexibleSpace();
+
+                    drawContent?.Invoke();
+                    
+                    GUILayout.FlexibleSpace();
+                }
+                
+                GUILayout.FlexibleSpace();
+            }
+        }
 
         /// <summary>
         /// Draws content surrounded by <see cref="GUILayout.FlexibleSpace"/> calls in both a horizontal and vertical
         /// scope. This is useful for creating centered content. 
         /// </summary>
-        /// <param name="drawContent"></param>
+        /// <param name="drawContent">The invokable action used to draw content within the horizontal and vertical flexed space.</param>
         /// <param name="horizontalBoxStyle"></param>
         /// <param name="verticalBoxStyle"></param>
-        public static void DrawFullyFlexibleContent(Action drawContent, GUIStyle horizontalBoxStyle = null, GUIStyle verticalBoxStyle = null)
+        public static void DrawFullyFlexibleContent(Action drawContent, GUIStyle horizontalBoxStyle, GUIStyle verticalBoxStyle)
         {
             using (new GUILayout.HorizontalScope(horizontalBoxStyle))
             {
