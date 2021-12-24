@@ -1,0 +1,12 @@
+{
+  "name": "com.austephnerllc.protogui",
+  "version": "1.0.0",
+  "displayName": "ProtoGUI",
+  "description": "Collection of useful classes and `GUILayout` functionality that allows for rapid UI-window prototyping with IMGUI.",
+  "unity": "2020.3",
+  "author": {
+    "name": "Austephner LLC",
+    "email": "support@austephner.com",
+    "url": "https://www.austephner.com"
+  }
+}
