@@ -1,6 +1,5 @@
 ﻿using System;
 using ProtoGUI.Attributes;
-using Prototyping;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -163,8 +162,6 @@ namespace ProtoGUI
 
         private void Window(int id)
         {
-            GUI.color = SettingsPrototypeWindow.prototypeUiColor;
-
             if (showToolbar)
             {
                 GUILayout.BeginHorizontal(GUI.skin.box);
