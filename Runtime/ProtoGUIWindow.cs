@@ -243,8 +243,18 @@ namespace ProtoGUI
         {
             _minimizedRect = rect;
         }
-        
-        public bool ContainsMouse() => _rect.Contains(Input.mousePosition);
+
+        public bool RectContainsMouse()
+        {
+            var mousePosition = Input.mousePosition; 
+            mousePosition.y = Mathf.Lerp(Screen.height, 0, mousePosition.y / Screen.height);
+            return rect.Contains(mousePosition);
+        }
+
+        public bool RectContainsPoint(Vector2 point)
+        {
+            return rect.Contains(point);
+        }
         
         public void DrawHorizontalFlexibleLabel(string label) 
         {
