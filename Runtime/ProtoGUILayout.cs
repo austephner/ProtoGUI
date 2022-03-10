@@ -216,6 +216,28 @@ namespace ProtoGUI
         }
         
         #endregion
+
+        #region Labels
+        
+        /// <summary>
+        /// Draws a label that's been completely wrapped by <see cref="GUILayout.FlexibleSpace"/>.
+        /// </summary>
+        /// <param name="label">The string label to use.</param>
+        public static void DrawFullyFlexibleLabel(string label)
+        {
+            DrawFullyFlexibleContent(() => GUILayout.Label(label));
+        }
+
+        /// <summary>
+        /// Draws a label that's been completely wrapped by <see cref="GUILayout.FlexibleSpace"/>.
+        /// </summary>
+        /// <param name="guiContent">The GUI Content to use.</param>
+        public static void DrawFullyFlexibleLabel(GUIContent guiContent)
+        {
+            DrawFullyFlexibleContent(() => GUILayout.Label(guiContent));
+        }
+
+        #endregion
         
         #region Enum Fields
 
