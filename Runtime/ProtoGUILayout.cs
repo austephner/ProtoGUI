@@ -7,6 +7,8 @@ namespace ProtoGUI
 {
     public static class ProtoGUILayout
     {
+        #region Menu Options
+        
         /// <summary>
         /// Draws a series of <see cref="ProtoMenuButton"/> objects vertically using the default GUI
         /// <see cref="GUI.skin"/> <c>box</c>. 
@@ -49,6 +51,10 @@ namespace ProtoGUI
                 GUI.color = originalColor;
             }
         }
+        
+        #endregion
+        
+        #region Content Drawing
         
         /// <summary>
         /// Draws content surrounded by <see cref="GUILayout.FlexibleSpace"/> calls in both a horizontal and vertical
@@ -133,6 +139,10 @@ namespace ProtoGUI
                 GUILayout.FlexibleSpace();
             }
         }
+        
+        #endregion
+        
+        #region Sliders
 
         /// <summary>
         /// Draws a horizontal slider with a label.
@@ -204,6 +214,10 @@ namespace ProtoGUI
 
             return value;
         }
+        
+        #endregion
+        
+        #region Enum Fields
 
         /// <summary>
         /// Draws a "left" and "right" button to cycle through a series of enumeration values. The given type <see cref="T"/>
@@ -361,7 +375,11 @@ namespace ProtoGUI
 
             return value;
         }
+        
+        #endregion
 
+        #region Private Utilities 
+        
         private static int GetIndexOfSelection<T>(T value, T[] values) where T : Enum
         {
             for (int i = 0; i < values.Length; i++)
@@ -374,6 +392,8 @@ namespace ProtoGUI
 
             return -1;
         }
+        
+        #endregion
     }
 
     public class ProtoMenuButton
