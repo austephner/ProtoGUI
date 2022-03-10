@@ -7,6 +7,32 @@ namespace ProtoGUI
 {
     public static class ProtoGUILayout
     {
+        #region Properties
+
+        public const float messageBoxIconSize = 30;
+
+        public static readonly Color infoBoxColor = new Color(0.25f, 0.25f, 1.0f, 1.0f);
+        
+        public static readonly Color warningBoxColor = new Color(1.0f, 0.7f, 0.25f, 1.0f);
+        
+        public static readonly Color errorBoxColor = new Color(1.0f, 0.5f, 0.5f, 1.0f);
+
+        public static readonly Sprite infoBoxSprite, warningBoxSprite, errorBoxSprite;
+
+        // public static readonly GUIStyle infoBoxStyle;
+
+        #endregion
+
+        #region Constructors
+        static ProtoGUILayout()
+        {
+            infoBoxSprite = Resources.Load<Sprite>("protogui_infobox_icon");
+            warningBoxSprite = Resources.Load<Sprite>("protogui_warningbox_icon");
+            errorBoxSprite = Resources.Load<Sprite>("protogui_error_icon");
+        }
+
+        #endregion
+        
         #region Menu Options
         
         /// <summary>
@@ -140,6 +166,77 @@ namespace ProtoGUI
             }
         }
         
+        #endregion
+
+        #region Non-Editor Messaging
+
+        /// <summary>
+        /// Draws a content box with the given <see cref="icon"/> and <see cref="backgroundColor"/>.
+        /// </summary>
+        /// <param name="icon">The icon that appear on the left side of the box.</param>
+        /// <param name="backgroundColor">The background color of the box.</param>
+        /// <param name="drawContent">The action which draws additional content.</param>
+        public static void DrawIconContentBox(Texture icon, Color backgroundColor, Action drawContent)
+        {
+            var originalGuiColor = GUI.color;
+            GUI.backgroundColor = backgroundColor;
+            
+            using (new GUILayout.VerticalScope(GUI.skin.box))
+            {
+                GUI.backgroundColor = originalGuiColor;
+                
+                GUILayout.Space(15);
+
+                using (new GUILayout.HorizontalScope())
+                {
+                    GUILayout.Space(15);
+                    
+                    GUILayout.Label(
+                        icon, 
+                        GUILayout.Width(messageBoxIconSize), 
+                        GUILayout.Height(messageBoxIconSize));
+
+                    GUILayout.Space(15);
+
+                    using (new GUILayout.VerticalScope())
+                    {
+                        drawContent?.Invoke();
+                    }
+                    
+                    GUILayout.Space(15); 
+                }
+
+                GUILayout.Space(15); 
+            }
+        }
+        
+        /// <summary>
+        /// Draws an "info box" with <see cref="infoBoxColor"/> and <see cref="infoBoxSprite"/>.
+        /// </summary>
+        /// <param name="drawContent">The action which draws additional content.</param>
+        public static void DrawInfoBox(Action drawContent)
+        {
+            DrawIconContentBox(infoBoxSprite?.texture, infoBoxColor, drawContent);
+        }
+        
+        /// <summary>
+        /// Draws an "info box" with <see cref="warningBoxColor"/> and <see cref="warningBoxSprite"/>.
+        /// </summary>
+        /// <param name="drawContent">The action which draws additional content.</param>
+        public static void DrawWarningBox(Action drawContent)
+        {
+            DrawIconContentBox(warningBoxSprite?.texture, warningBoxColor, drawContent);
+        }
+        
+        /// <summary>
+        /// Draws an "error box" with <see cref="errorBoxColor"/> and <see cref="errorBoxSprite"/>.
+        /// </summary>
+        /// <param name="drawContent">The action which draws additional content.</param>
+        public static void DrawErrorBox(Action drawContent)
+        {
+            DrawIconContentBox(errorBoxSprite?.texture, errorBoxColor, drawContent);
+        }
+
         #endregion
         
         #region Sliders
@@ -413,6 +510,21 @@ namespace ProtoGUI
             }
 
             return -1;
+        }
+
+        private static Texture2D CreateBackgroundTexture(Color color)
+        {
+            var result = new Texture2D(2, 2);
+
+            for (int x = 0; x < 2; x++)
+            {
+                for (int y = 0; y < 2; y++)
+                {
+                    result.SetPixel(x, y, color);
+                }
+            }
+
+            return result;
         }
         
         #endregion
