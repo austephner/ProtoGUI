@@ -19,8 +19,6 @@ namespace ProtoGUI
 
         public static readonly Sprite infoBoxSprite, warningBoxSprite, errorBoxSprite;
 
-        // public static readonly GUIStyle infoBoxStyle;
-
         #endregion
 
         #region Constructors
@@ -28,12 +26,12 @@ namespace ProtoGUI
         {
             infoBoxSprite = Resources.Load<Sprite>("protogui_infobox_icon");
             warningBoxSprite = Resources.Load<Sprite>("protogui_warningbox_icon");
-            errorBoxSprite = Resources.Load<Sprite>("protogui_error_icon");
+            errorBoxSprite = Resources.Load<Sprite>("protogui_errorbox_icon");
         }
 
         #endregion
         
-        #region Menu Options
+        #region Drawing Menus
         
         /// <summary>
         /// Draws a series of <see cref="ProtoMenuButton"/> objects vertically using the default GUI
@@ -80,7 +78,7 @@ namespace ProtoGUI
         
         #endregion
         
-        #region Content Drawing
+        #region Containers
         
         /// <summary>
         /// Draws content surrounded by <see cref="GUILayout.FlexibleSpace"/> calls in both a horizontal and vertical
@@ -180,7 +178,7 @@ namespace ProtoGUI
         
         #endregion
 
-        #region Non-Editor Messaging
+        #region Special Containers
 
         /// <summary>
         /// Draws a content box with the given <see cref="icon"/> and <see cref="backgroundColor"/>.

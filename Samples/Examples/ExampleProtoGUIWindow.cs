@@ -9,7 +9,17 @@ namespace ProtoGUI.Examples
         private ExampleEnum _testExampleEnum = ExampleEnum.EnumValueA;
 
         private Vector2 _scrollArea;
-        
+
+        protected override void DrawToolbar()
+        {
+            base.DrawToolbar();
+
+            if (GUILayout.Button("Custom Menu Action"))
+            {
+                Debug.Log("This would've opened something had you implemented it!");
+            }
+        }
+
         protected override void DrawContent()
         {
             _scrollArea = GUILayout.BeginScrollView(_scrollArea, GUIStyle.none, GUI.skin.verticalScrollbar); 
