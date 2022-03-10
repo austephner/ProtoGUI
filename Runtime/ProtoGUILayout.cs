@@ -165,6 +165,18 @@ namespace ProtoGUI
                 GUILayout.FlexibleSpace();
             }
         }
+
+        /// <summary>
+        /// Draws a vertical-only scroll box, disabling horizontal scrolling.
+        /// </summary>
+        /// <param name="scrollPosition"></param>
+        /// <param name="drawContent"></param>
+        public static void DrawVerticalScrollArea(ref Vector2 scrollPosition, Action drawContent)
+        {
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUIStyle.none, GUI.skin.verticalScrollbar);
+            drawContent?.Invoke();
+            GUILayout.EndScrollView();
+        }
         
         #endregion
 
