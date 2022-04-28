@@ -10,6 +10,8 @@ namespace ProtoGUI.Examples
 
         private Vector2 _scrollArea;
 
+        private string _testString;
+        
         protected override void DrawToolbar()
         {
             base.DrawToolbar();
@@ -28,6 +30,7 @@ namespace ProtoGUI.Examples
             _testFloat = ProtoGUILayout.DrawFancyHorizontalSlider("Fancy Slider", _testFloat, -1.0f, 1.0f);
             _testExampleEnum = ProtoGUILayout.DrawHorizontalEnumSelector("Enum Selector", _testExampleEnum);
             _testExampleEnum = ProtoGUILayout.DrawHorizontalEnumSelectionGrid("Enum Grid", _testExampleEnum);
+            _testString = ProtoGUILayout.DrawTextField("Text Field", _testString);
 
             GUILayout.Space(30);
             

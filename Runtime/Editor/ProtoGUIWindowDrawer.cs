@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 namespace ProtoGUI.Editor
@@ -36,3 +37,4 @@ namespace ProtoGUI.Editor
         }
     }
 }
+#endif

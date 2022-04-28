@@ -507,6 +507,19 @@ namespace ProtoGUI
         
         #endregion
 
+        #region Text Fields
+
+        public static string DrawTextField(string label, string value, float labelWidth = 150)
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(label, GUILayout.Width(labelWidth));
+            value = GUILayout.TextField(value, GUILayout.ExpandWidth(true)); 
+            GUILayout.EndHorizontal();
+            return value;
+        }
+
+        #endregion
+
         #region Private Utilities 
         
         private static int GetIndexOfSelection<T>(T value, T[] values) where T : Enum

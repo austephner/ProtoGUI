@@ -8,7 +8,8 @@ Collection of useful classes and `GUILayout` functionality that allows for rapid
 - Window system allows for minimizing, closing, re-opening individual windows like an operating system
 - Windows are highly configurable
 
-#### Preview of Latest Features
+#### Outdated Preview
+_Please note that there are more fields and features than shown in the below screenshot!_<br/>
 ![Example](https://i.imgur.com/0L6oYts.png)
 
 #### Window Functionality Example
@@ -110,6 +111,18 @@ _Icons in above screenshot are included in the packages resource folder for free
 
 ### Editable Fields
 This section is rather small but will be expanded upon in the future. There is a ton of code I haven't committed/pushed yet because its usage is being tested in other projects.
+
+#### `DrawTextField`
+- Draws a typical text field with a label width of `150`
+- Meant to look like and mimic editor text field
+
+```c#
+var myString = "";
+
+myString = ProtoGUILayout.TextField("Text Field", myString);
+```
+
+![Text Field Example](https://i.imgur.com/R0IQ6Jx.png)
 
 #### `DrawHorizontalSliderField`
 - Draws a slider field with a label width of `150`
