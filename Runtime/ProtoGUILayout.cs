@@ -134,10 +134,9 @@ namespace ProtoGUI
         /// Draws content surrounded by <see cref="GUILayout.FlexibleSpace"/> calls in a horizontal scope.
         /// </summary>
         /// <param name="drawContent"></param>
-        /// <param name="horizontalBoxStyle"></param>
-        public static void DrawHorizontallyFlexibleContent(Action drawContent, GUIStyle horizontalBoxStyle = null)
+        public static void DrawHorizontallyFlexibleContent(Action drawContent)
         {
-            using (new GUILayout.HorizontalScope(horizontalBoxStyle))
+            using (new GUILayout.HorizontalScope())
             {
                 GUILayout.FlexibleSpace();
 
@@ -152,7 +151,7 @@ namespace ProtoGUI
         /// </summary>
         /// <param name="drawContent"></param>
         /// <param name="verticalBoxStyle"></param>
-        public static void DrawVerticallyFlexibleContent(Action drawContent, GUIStyle verticalBoxStyle = null)
+        public static void DrawVerticallyFlexibleContent(Action drawContent)
         {
             using (new GUILayout.VerticalScope())
             {
