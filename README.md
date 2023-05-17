@@ -1,4 +1,4 @@
-# ProtoGUI [v1.1.0]
+# ProtoGUI [v1.1.3]
 #### Summary
 Collection of useful classes and `GUILayout` functionality that allows for rapid UI-window prototyping with IMGUI. Includes an extensible window system that mimics OS-like behaviour. It's very easy to setup and implement!
 

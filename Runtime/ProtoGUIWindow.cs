@@ -138,7 +138,7 @@ namespace ProtoGUI
         {
             if (!_startCalled)
             {
-                throw new Exception("Start() wasn't called. Please ensure Start() is called with base.Start()");
+                throw new Exception($"Start() wasn't called for window titled \"{windowTitle}\". Please ensure Start() is called with base.Start()");
             }
             
             UpdateSizingModes();
